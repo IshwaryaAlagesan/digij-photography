@@ -1,184 +1,184 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","1700","Smooth scroll navigation works","","Thu Mar 12 14:14:15 UTC 2026","passed","Thu Mar 12 14:14:16 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1686","Login modal closes when clicking outside","","Thu Mar 12 14:15:14 UTC 2026","passed","Thu Mar 12 14:15:15 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1242","Contact details show business hours","","Thu Mar 12 14:14:48 UTC 2026","passed","Thu Mar 12 14:14:49 UTC 2026","","","",""
 "As a potential client
   I want to see the photography services offered
-  So that I can choose the right service for my needs","1257","Birthday Photo Shoot service is listed","","Thu Mar 12 14:14:19 UTC 2026","passed","Thu Mar 12 14:14:20 UTC 2026","","","",""
+  So that I can choose the right service for my needs","1074","Birthday Photo Shoot service is listed","","Thu Mar 12 14:32:57 UTC 2026","passed","Thu Mar 12 14:32:58 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","660","Login button is visible for guests","","Thu Mar 12 14:33:29 UTC 2026","passed","Thu Mar 12 14:33:29 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1072","Contact details show correct phone","","Thu Mar 12 14:33:20 UTC 2026","passed","Thu Mar 12 14:33:21 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1069","Three pricing cards are displayed","","Thu Mar 12 14:33:06 UTC 2026","passed","Thu Mar 12 14:33:07 UTC 2026","","","",""
 "As a mobile user
   I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","1322","Mobile menu opens when hamburger is clicked","","Thu Mar 12 14:15:16 UTC 2026","passed","Thu Mar 12 14:15:18 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1808","Contact form submission shows success","","Thu Mar 12 14:14:54 UTC 2026","passed","Thu Mar 12 14:14:56 UTC 2026","","","",""
+  So that I can browse comfortably on my phone","710","Hamburger menu is visible on mobile","","Thu Mar 12 14:33:46 UTC 2026","passed","Thu Mar 12 14:33:47 UTC 2026","","","",""
 "As a potential client
   I want to see the photography services offered
-  So that I can choose the right service for my needs","1249","There are exactly 6 service cards","","Thu Mar 12 14:14:25 UTC 2026","passed","Thu Mar 12 14:14:26 UTC 2026","","","",""
+  So that I can choose the right service for my needs","1063","Digital Prints & Albums service is listed","","Thu Mar 12 14:32:59 UTC 2026","passed","Thu Mar 12 14:33:00 UTC 2026","","","",""
 "As a website visitor
   I want to register and login
-  So that I can access my account","1332","Login modal has email and password fields","","Thu Mar 12 14:14:58 UTC 2026","passed","Thu Mar 12 14:14:59 UTC 2026","","","",""
-"As a potential client
-  I want to see the photography services offered
-  So that I can choose the right service for my needs","1252","Services section header is displayed","","Thu Mar 12 14:14:16 UTC 2026","passed","Thu Mar 12 14:14:18 UTC 2026","","","",""
+  So that I can access my account","1651","Login modal closes when clicking outside","","Thu Mar 12 14:33:45 UTC 2026","passed","Thu Mar 12 14:33:46 UTC 2026","","","",""
 "As a visitor to DigiJ Photography website
   I want to see the homepage with branding and navigation
-  So that I can explore the photography services","888","Navbar displays brand name","","Thu Mar 12 14:14:07 UTC 2026","passed","Thu Mar 12 14:14:08 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","879","Hero section displays welcome message","","Thu Mar 12 14:14:09 UTC 2026","passed","Thu Mar 12 14:14:10 UTC 2026","","","",""
+  So that I can explore the photography services","1505","Smooth scroll navigation works","","Thu Mar 12 14:32:53 UTC 2026","passed","Thu Mar 12 14:32:55 UTC 2026","","","",""
 "As a mobile user
   I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","1268","Service cards stack on small phones","","Thu Mar 12 14:15:24 UTC 2026","passed","Thu Mar 12 14:15:25 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1922","User can login after registration","","Thu Mar 12 14:15:08 UTC 2026","passed","Thu Mar 12 14:15:10 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","2219","User can logout","","Thu Mar 12 14:15:10 UTC 2026","passed","Thu Mar 12 14:15:12 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","862","Stats bar displays key metrics","","Thu Mar 12 14:14:12 UTC 2026","passed","Thu Mar 12 14:14:13 UTC 2026","","","",""
-"As a mobile user
-  I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","1316","Mobile menu has Login button for guests","","Thu Mar 12 14:15:19 UTC 2026","passed","Thu Mar 12 14:15:21 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1249","Basic Session has correct features","","Thu Mar 12 14:14:36 UTC 2026","passed","Thu Mar 12 14:14:37 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","869","Footer has quick links","","Thu Mar 12 14:14:14 UTC 2026","passed","Thu Mar 12 14:14:15 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","2234","User can register a new account","","Thu Mar 12 14:15:04 UTC 2026","passed","Thu Mar 12 14:15:06 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1300","Login modal has Sign In button","","Thu Mar 12 14:14:59 UTC 2026","passed","Thu Mar 12 14:15:00 UTC 2026","","","",""
-"As a mobile user
-  I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","1273","Contact form is full-width on mobile","","Thu Mar 12 14:15:23 UTC 2026","passed","Thu Mar 12 14:15:24 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","874","Login button is visible for guests","","Thu Mar 12 14:14:56 UTC 2026","passed","Thu Mar 12 14:14:56 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1284","Contact details show correct phone","","Thu Mar 12 14:14:46 UTC 2026","passed","Thu Mar 12 14:14:48 UTC 2026","","","",""
-"As a mobile user
-  I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","848","Hamburger menu is visible on mobile","","Thu Mar 12 14:15:15 UTC 2026","passed","Thu Mar 12 14:15:16 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1262","Contact details show correct email","","Thu Mar 12 14:14:45 UTC 2026","passed","Thu Mar 12 14:14:46 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1645","Login modal closes on Escape key","","Thu Mar 12 14:15:12 UTC 2026","passed","Thu Mar 12 14:15:14 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","861","Hero has call-to-action buttons","","Thu Mar 12 14:14:10 UTC 2026","passed","Thu Mar 12 14:14:11 UTC 2026","","","",""
-"As a mobile user
-  I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","1769","Mobile menu closes when close button is clicked","","Thu Mar 12 14:15:18 UTC 2026","passed","Thu Mar 12 14:15:19 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1254","Premium Session has correct features","","Thu Mar 12 14:14:37 UTC 2026","passed","Thu Mar 12 14:14:39 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1288","Contact form dropdown has correct pricing options","","Thu Mar 12 14:14:50 UTC 2026","passed","Thu Mar 12 14:14:51 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1370","Premium Session is marked as Most Popular","","Thu Mar 12 14:14:35 UTC 2026","passed","Thu Mar 12 14:14:36 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1280","Three pricing cards are displayed","","Thu Mar 12 14:14:30 UTC 2026","passed","Thu Mar 12 14:14:31 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1312","Clicking Login opens the login modal","","Thu Mar 12 14:14:56 UTC 2026","passed","Thu Mar 12 14:14:58 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1705","Can switch to registration form","","Thu Mar 12 14:15:00 UTC 2026","passed","Thu Mar 12 14:15:02 UTC 2026","","","",""
-"As a mobile user
-  I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","909","Hero section stacks vertically on mobile","","Thu Mar 12 14:15:21 UTC 2026","passed","Thu Mar 12 14:15:22 UTC 2026","","","",""
-"As a website visitor
-  I want to register and login
-  So that I can access my account","1652","Registration form has required fields","","Thu Mar 12 14:15:02 UTC 2026","passed","Thu Mar 12 14:15:04 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1287","Full Day Coverage has correct features","","Thu Mar 12 14:14:39 UTC 2026","passed","Thu Mar 12 14:14:40 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1251","Each pricing card has a Book Now button","","Thu Mar 12 14:14:40 UTC 2026","passed","Thu Mar 12 14:14:41 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1289","Full Day Coverage package displays correct price","","Thu Mar 12 14:14:33 UTC 2026","passed","Thu Mar 12 14:14:35 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1265","Premium Session package displays correct price","","Thu Mar 12 14:14:32 UTC 2026","passed","Thu Mar 12 14:14:33 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","2034","Page title displays correctly","","Thu Mar 12 14:14:05 UTC 2026","passed","Thu Mar 12 14:14:07 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","852","Footer displays brand and copyright","","Thu Mar 12 14:14:13 UTC 2026","passed","Thu Mar 12 14:14:14 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1246","Contact form has all required fields","","Thu Mar 12 14:14:49 UTC 2026","passed","Thu Mar 12 14:14:50 UTC 2026","","","",""
-"As a mobile user
-  I want the website to display properly on small screens
-  So that I can browse comfortably on my phone","1269","Pricing cards stack on mobile","","Thu Mar 12 14:15:22 UTC 2026","passed","Thu Mar 12 14:15:23 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1264","Basic Session package displays correct price","","Thu Mar 12 14:14:31 UTC 2026","passed","Thu Mar 12 14:14:32 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","860","Hero section shows photography description","","Thu Mar 12 14:14:10 UTC 2026","passed","Thu Mar 12 14:14:10 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1241","Contact form has submit button","","Thu Mar 12 14:14:53 UTC 2026","passed","Thu Mar 12 14:14:54 UTC 2026","","","",""
+  So that I can browse comfortably on my phone","1124","Pricing cards stack on mobile","","Thu Mar 12 14:33:52 UTC 2026","passed","Thu Mar 12 14:33:53 UTC 2026","","","",""
 "As a potential client
   I want to see the photography services offered
-  So that I can choose the right service for my needs","1255","Family Portraits service is listed","","Thu Mar 12 14:14:23 UTC 2026","passed","Thu Mar 12 14:14:24 UTC 2026","","","",""
+  So that I can choose the right service for my needs","1093","Wedding Photoshoot service is listed","","Thu Mar 12 14:32:56 UTC 2026","passed","Thu Mar 12 14:32:57 UTC 2026","","","",""
+"As a mobile user
+  I want the website to display properly on small screens
+  So that I can browse comfortably on my phone","1157","Mobile menu opens when hamburger is clicked","","Thu Mar 12 14:33:47 UTC 2026","passed","Thu Mar 12 14:33:48 UTC 2026","","","",""
+"As a mobile user
+  I want the website to display properly on small screens
+  So that I can browse comfortably on my phone","704","Hero section stacks vertically on mobile","","Thu Mar 12 14:33:51 UTC 2026","passed","Thu Mar 12 14:33:52 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1071","Pricing section header is displayed","","Thu Mar 12 14:33:05 UTC 2026","passed","Thu Mar 12 14:33:06 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1207","Each pricing card has a Book Now button","","Thu Mar 12 14:33:15 UTC 2026","passed","Thu Mar 12 14:33:16 UTC 2026","","","",""
+"As a potential client
+  I want to see the photography services offered
+  So that I can choose the right service for my needs","1749","Service cards have hover effect","","Thu Mar 12 14:33:03 UTC 2026","passed","Thu Mar 12 14:33:05 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1070","Contact details show correct email","","Thu Mar 12 14:33:19 UTC 2026","passed","Thu Mar 12 14:33:20 UTC 2026","","","",""
+"As a potential client
+  I want to see the photography services offered
+  So that I can choose the right service for my needs","1070","Event Photography service is listed","","Thu Mar 12 14:33:01 UTC 2026","passed","Thu Mar 12 14:33:02 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1073","Pricing note with contact link is displayed","","Thu Mar 12 14:33:16 UTC 2026","passed","Thu Mar 12 14:33:17 UTC 2026","","","",""
 "As a website visitor
   I want to register and login
-  So that I can access my account","1888","Login with invalid credentials shows error","","Thu Mar 12 14:15:06 UTC 2026","passed","Thu Mar 12 14:15:08 UTC 2026","","","",""
-"As a potential client
-  I want to see the photography services offered
-  So that I can choose the right service for my needs","1253","Digital Prints & Albums service is listed","","Thu Mar 12 14:14:21 UTC 2026","passed","Thu Mar 12 14:14:23 UTC 2026","","","",""
-"As a potential client
-  I want to see the photography services offered
-  So that I can choose the right service for my needs","1287","Event Photography service is listed","","Thu Mar 12 14:14:24 UTC 2026","passed","Thu Mar 12 14:14:25 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1248","Contact details show correct address","","Thu Mar 12 14:14:44 UTC 2026","passed","Thu Mar 12 14:14:45 UTC 2026","","","",""
-"As a visitor to DigiJ Photography website
-  I want to see the homepage with branding and navigation
-  So that I can explore the photography services","907","Navbar has correct navigation links","","Thu Mar 12 14:14:08 UTC 2026","passed","Thu Mar 12 14:14:09 UTC 2026","","","",""
-"As a potential client
-  I want to see the photography services offered
-  So that I can choose the right service for my needs","1266","Wedding Photoshoot service is listed","","Thu Mar 12 14:14:18 UTC 2026","passed","Thu Mar 12 14:14:19 UTC 2026","","","",""
+  So that I can access my account","1747","User can login after registration","","Thu Mar 12 14:33:40 UTC 2026","passed","Thu Mar 12 14:33:41 UTC 2026","","","",""
 "As a potential client
   I want to see pricing packages
-  So that I can choose a package that fits my budget","1305","Pricing note with contact link is displayed","","Thu Mar 12 14:14:41 UTC 2026","passed","Thu Mar 12 14:14:42 UTC 2026","","","",""
-"As a potential client
-  I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1269","Contact form dropdown has service options","","Thu Mar 12 14:14:51 UTC 2026","passed","Thu Mar 12 14:14:53 UTC 2026","","","",""
+  So that I can choose a package that fits my budget","1074","Premium Session has correct features","","Thu Mar 12 14:33:13 UTC 2026","passed","Thu Mar 12 14:33:14 UTC 2026","","","",""
 "As a visitor to DigiJ Photography website
   I want to see the homepage with branding and navigation
-  So that I can explore the photography services","884","Floating cards display photography services","","Thu Mar 12 14:14:11 UTC 2026","passed","Thu Mar 12 14:14:12 UTC 2026","","","",""
+  So that I can explore the photography services","2740","Page title displays correctly","","Thu Mar 12 14:32:44 UTC 2026","passed","Thu Mar 12 14:32:47 UTC 2026","","","",""
+"As a mobile user
+  I want the website to display properly on small screens
+  So that I can browse comfortably on my phone","1148","Contact form is full-width on mobile","","Thu Mar 12 14:33:53 UTC 2026","passed","Thu Mar 12 14:33:54 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1587","Can switch to registration form","","Thu Mar 12 14:33:33 UTC 2026","passed","Thu Mar 12 14:33:34 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1757","Login with invalid credentials shows error","","Thu Mar 12 14:33:38 UTC 2026","passed","Thu Mar 12 14:33:40 UTC 2026","","","",""
 "As a potential client
   I want to see the photography services offered
-  So that I can choose the right service for my needs","1924","Service cards have hover effect","","Thu Mar 12 14:14:26 UTC 2026","passed","Thu Mar 12 14:14:28 UTC 2026","","","",""
-"As a potential client
-  I want to see pricing packages
-  So that I can choose a package that fits my budget","1248","Pricing section header is displayed","","Thu Mar 12 14:14:28 UTC 2026","passed","Thu Mar 12 14:14:30 UTC 2026","","","",""
+  So that I can choose the right service for my needs","1080","Family Portraits service is listed","","Thu Mar 12 14:33:00 UTC 2026","passed","Thu Mar 12 14:33:01 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1113","Login modal has Sign In button","","Thu Mar 12 14:33:32 UTC 2026","passed","Thu Mar 12 14:33:33 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1425","Login modal closes on Escape key","","Thu Mar 12 14:33:43 UTC 2026","passed","Thu Mar 12 14:33:45 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","673","Footer has quick links","","Thu Mar 12 14:32:53 UTC 2026","passed","Thu Mar 12 14:32:53 UTC 2026","","","",""
 "As a potential client
   I want to contact DigiJ Photography
-  So that I can book a session or ask questions","1251","Contact section displays heading","","Thu Mar 12 14:14:42 UTC 2026","passed","Thu Mar 12 14:14:44 UTC 2026","","","",""
+  So that I can book a session or ask questions","1081","Contact details show business hours","","Thu Mar 12 14:33:21 UTC 2026","passed","Thu Mar 12 14:33:23 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1073","Full Day Coverage has correct features","","Thu Mar 12 14:33:14 UTC 2026","passed","Thu Mar 12 14:33:15 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1072","Premium Session is marked as Most Popular","","Thu Mar 12 14:33:11 UTC 2026","passed","Thu Mar 12 14:33:12 UTC 2026","","","",""
 "As a potential client
   I want to see the photography services offered
-  So that I can choose the right service for my needs","1261","Baby Photo Shoot service is listed","","Thu Mar 12 14:14:20 UTC 2026","passed","Thu Mar 12 14:14:21 UTC 2026","","","",""
+  So that I can choose the right service for my needs","1114","Baby Photo Shoot service is listed","","Thu Mar 12 14:32:58 UTC 2026","passed","Thu Mar 12 14:32:59 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","706","Floating cards display photography services","","Thu Mar 12 14:32:50 UTC 2026","passed","Thu Mar 12 14:32:51 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","2061","User can register a new account","","Thu Mar 12 14:33:36 UTC 2026","passed","Thu Mar 12 14:33:38 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1062","Contact section displays heading","","Thu Mar 12 14:33:17 UTC 2026","passed","Thu Mar 12 14:33:18 UTC 2026","","","",""
+"As a mobile user
+  I want the website to display properly on small screens
+  So that I can browse comfortably on my phone","1122","Service cards stack on small phones","","Thu Mar 12 14:33:54 UTC 2026","passed","Thu Mar 12 14:33:55 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","672","Hero has call-to-action buttons","","Thu Mar 12 14:32:50 UTC 2026","passed","Thu Mar 12 14:32:50 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1114","Login modal has email and password fields","","Thu Mar 12 14:33:30 UTC 2026","passed","Thu Mar 12 14:33:32 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","672","Footer displays brand and copyright","","Thu Mar 12 14:32:52 UTC 2026","passed","Thu Mar 12 14:32:53 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","2084","User can logout","","Thu Mar 12 14:33:41 UTC 2026","passed","Thu Mar 12 14:33:43 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","709","Stats bar displays key metrics","","Thu Mar 12 14:32:51 UTC 2026","passed","Thu Mar 12 14:32:52 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1065","Contact details show correct address","","Thu Mar 12 14:33:18 UTC 2026","passed","Thu Mar 12 14:33:19 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1067","Contact form has submit button","","Thu Mar 12 14:33:26 UTC 2026","passed","Thu Mar 12 14:33:27 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1074","Basic Session package displays correct price","","Thu Mar 12 14:33:07 UTC 2026","passed","Thu Mar 12 14:33:08 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1137","Contact form has all required fields","","Thu Mar 12 14:33:23 UTC 2026","passed","Thu Mar 12 14:33:24 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1175","Basic Session has correct features","","Thu Mar 12 14:33:12 UTC 2026","passed","Thu Mar 12 14:33:13 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","674","Hero section displays welcome message","","Thu Mar 12 14:32:48 UTC 2026","passed","Thu Mar 12 14:32:49 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1071","Contact form dropdown has service options","","Thu Mar 12 14:33:25 UTC 2026","passed","Thu Mar 12 14:33:26 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1508","Registration form has required fields","","Thu Mar 12 14:33:34 UTC 2026","passed","Thu Mar 12 14:33:36 UTC 2026","","","",""
+"As a mobile user
+  I want the website to display properly on small screens
+  So that I can browse comfortably on my phone","1138","Mobile menu has Login button for guests","","Thu Mar 12 14:33:50 UTC 2026","passed","Thu Mar 12 14:33:51 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1113","Contact form dropdown has correct pricing options","","Thu Mar 12 14:33:24 UTC 2026","passed","Thu Mar 12 14:33:25 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1078","Full Day Coverage package displays correct price","","Thu Mar 12 14:33:09 UTC 2026","passed","Thu Mar 12 14:33:11 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","667","Hero section shows photography description","","Thu Mar 12 14:32:49 UTC 2026","passed","Thu Mar 12 14:32:50 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","743","Navbar has correct navigation links","","Thu Mar 12 14:32:48 UTC 2026","passed","Thu Mar 12 14:32:48 UTC 2026","","","",""
+"As a visitor to DigiJ Photography website
+  I want to see the homepage with branding and navigation
+  So that I can explore the photography services","671","Navbar displays brand name","","Thu Mar 12 14:32:47 UTC 2026","passed","Thu Mar 12 14:32:48 UTC 2026","","","",""
+"As a potential client
+  I want to see pricing packages
+  So that I can choose a package that fits my budget","1086","Premium Session package displays correct price","","Thu Mar 12 14:33:08 UTC 2026","passed","Thu Mar 12 14:33:09 UTC 2026","","","",""
+"As a mobile user
+  I want the website to display properly on small screens
+  So that I can browse comfortably on my phone","1557","Mobile menu closes when close button is clicked","","Thu Mar 12 14:33:48 UTC 2026","passed","Thu Mar 12 14:33:50 UTC 2026","","","",""
+"As a potential client
+  I want to see the photography services offered
+  So that I can choose the right service for my needs","1127","There are exactly 6 service cards","","Thu Mar 12 14:33:02 UTC 2026","passed","Thu Mar 12 14:33:03 UTC 2026","","","",""
+"As a potential client
+  I want to contact DigiJ Photography
+  So that I can book a session or ask questions","1667","Contact form submission shows success","","Thu Mar 12 14:33:27 UTC 2026","passed","Thu Mar 12 14:33:29 UTC 2026","","","",""
+"As a website visitor
+  I want to register and login
+  So that I can access my account","1113","Clicking Login opens the login modal","","Thu Mar 12 14:33:29 UTC 2026","passed","Thu Mar 12 14:33:30 UTC 2026","","","",""
+"As a potential client
+  I want to see the photography services offered
+  So that I can choose the right service for my needs","1073","Services section header is displayed","","Thu Mar 12 14:32:55 UTC 2026","passed","Thu Mar 12 14:32:56 UTC 2026","","","",""
