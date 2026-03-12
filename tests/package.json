@@ -1,0 +1,24 @@
+{
+  "name": "demosite-tests",
+  "version": "1.0.0",
+  "description": "Playwright E2E test suite for DemoSite CRM application",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:homepage": "playwright test specs/homepage.spec.js",
+    "test:auth": "playwright test specs/auth.spec.js",
+    "test:installment": "playwright test specs/installment.spec.js",
+    "test:customers": "playwright test specs/customers.spec.js",
+    "test:crm": "playwright test specs/crm.spec.js",
+    "test:mobile": "playwright test --project=mobile",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "allure-playwright": "^3.6.0"
+  }
+}

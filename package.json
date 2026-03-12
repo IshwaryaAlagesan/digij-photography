@@ -1,0 +1,36 @@
+{
+  "name": "test_app_mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "cucumber-js",
+    "test:homepage": "cucumber-js tests/features/01-homepage.feature",
+    "test:services": "cucumber-js tests/features/02-services.feature",
+    "test:pricing": "cucumber-js tests/features/03-pricing.feature",
+    "test:contact": "cucumber-js tests/features/04-contact.feature",
+    "test:auth": "cucumber-js tests/features/05-authentication.feature",
+    "test:mobile": "cucumber-js tests/features/06-mobile-responsive.feature",
+    "test:headed": "cucumber-js --config cucumber.headed.json",
+    "test:headed:auth": "cucumber-js --config cucumber.headed.json tests/features/05-authentication.feature",
+    "test:headed:pricing": "cucumber-js --config cucumber.headed.json tests/features/03-pricing.feature",
+    "allure:clean": "rmdir /s /q allure-results allure-report 2>nul || true",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "test:allure": "npm run allure:clean && npm test && npm run allure:report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.7.0",
+    "@playwright/test": "^1.58.2",
+    "allure-cucumberjs": "^3.6.0",
+    "playwright": "^1.58.2"
+  }
+}

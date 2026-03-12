@@ -1,0 +1,10 @@
+node_modules/
+allure-results/
+allure-report/
+tests/reports/
+tests/playwright-report/
+tests/test-results/
+test-results/
+.claude/
+.netlify/
+*.log
