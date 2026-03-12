@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -17,9 +17,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # ── Checkout & Setup ──
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -35,10 +39,12 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
 
+      # ── Run Tests ──
       - name: Run BDD tests
         run: npx cucumber-js || true
         continue-on-error: true
 
+      # ── Generate Allure Report ──
       - name: Setup Java (for Allure CLI)
         uses: actions/setup-java@v4
         if: always()
@@ -53,44 +59,22 @@ jobs:
           tar -xzf allure.tgz
           echo "$PWD/allure-2.32.0/bin" >> $GITHUB_PATH
 
-      - name: Get previous Allure history
-        if: always()
-        run: |
-          git fetch origin gh-pages --depth=1 || true
-          mkdir -p allure-results/history
-          git checkout origin/gh-pages -- history/ 2>/dev/null && cp -r history/* allure-results/history/ || true
-
       - name: Generate Allure Report
         if: always()
         run: allure generate allure-results --clean -o allure-report
 
-      - name: Upload Allure Report artifact
-        uses: actions/upload-artifact@v4
-        if: always()
+      # ── Deploy to GitHub Pages (same job) ──
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        if: always() && github.ref == 'refs/heads/main'
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        if: always() && github.ref == 'refs/heads/main'
         with:
-          name: allure-report
           path: allure-report
-
-  deploy:
-    needs: test
-    if: always() && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download Allure Report
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-
-      - name: Add .nojekyll file
-        run: touch allure-report/.nojekyll
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          keep_files: false
+        id: deployment
+        uses: actions/deploy-pages@v4
+        if: always() && github.ref == 'refs/heads/main'
