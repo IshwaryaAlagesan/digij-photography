@@ -1,3 +1,19 @@
+// ===== API CONFIGURATION =====
+const API_BASE = 'http://localhost:3000/api';
+
+function getToken()  { return localStorage.getItem('demosite_jwt'); }
+function setToken(t) { localStorage.setItem('demosite_jwt', t); }
+function clearToken() { localStorage.removeItem('demosite_jwt'); }
+
+async function apiFetch(path, options = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) };
+  const token = getToken();
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  const res = await fetch(API_BASE + path, { ...options, headers });
+  if (res.status === 401) { clearToken(); clearSession(); showLoggedOut(); }
+  return res;
+}
+
 // ===== MOBILE MENU =====
 function toggleMobileMenu() {
   const menu = document.getElementById('mobile-menu');
@@ -135,17 +151,10 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ===================================================
-// AUTH: Login / Register / Logout
+// AUTH: Login / Register / Logout (MongoDB backend)
 // ===================================================
-const USERS_KEY = 'demosite_users';
 const SESSION_KEY = 'demosite_session';
 
-function getUsers() {
-  return JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
-}
-function saveUsers(users) {
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
 function getSession() {
   return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
 }
@@ -158,9 +167,11 @@ function clearSession() {
 
 function initAuth() {
   const session = getSession();
-  if (session) {
+  if (session && getToken()) {
     showLoggedIn(session);
   } else {
+    clearToken();
+    clearSession();
     showLoggedOut();
   }
 }
@@ -216,40 +227,60 @@ function showError(id, msg) {
   el.style.display = 'block';
 }
 
-function handleLogin(e) {
+async function handleLogin(e) {
   e.preventDefault();
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value;
-  const users = getUsers();
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) {
-    showError('login-error', 'Invalid email or password.');
-    return;
+  try {
+    const res = await apiFetch('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+    if (!res.ok) {
+      showError('login-error', 'Invalid email or password.');
+      return;
+    }
+    const data = await res.json();
+    setToken(data.token);
+    saveSession(data.user);
+    showLoggedIn(data.user);
+    closeLoginModal();
+    renderCustomers();
+    renderCrmDashboard();
+  } catch {
+    showError('login-error', 'Connection error. Please try again.');
   }
-  saveSession(user);
-  showLoggedIn(user);
-  closeLoginModal();
 }
 
-function handleRegister(e) {
+async function handleRegister(e) {
   e.preventDefault();
   const name = document.getElementById('reg-name').value.trim();
   const email = document.getElementById('reg-email').value.trim();
   const password = document.getElementById('reg-password').value;
-  const users = getUsers();
-  if (users.find(u => u.email === email)) {
-    showError('register-error', 'An account with this email already exists.');
-    return;
+  try {
+    const res = await apiFetch('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password }),
+    });
+    if (!res.ok) {
+      const data = await res.json();
+      showError('register-error', data.error || 'Registration failed.');
+      return;
+    }
+    const data = await res.json();
+    setToken(data.token);
+    saveSession(data.user);
+    showLoggedIn(data.user);
+    closeLoginModal();
+    renderCustomers();
+    renderCrmDashboard();
+  } catch {
+    showError('register-error', 'Connection error. Please try again.');
   }
-  const newUser = { name, email, password };
-  users.push(newUser);
-  saveUsers(users);
-  saveSession(newUser);
-  showLoggedIn(newUser);
-  closeLoginModal();
 }
 
 function logout() {
+  clearToken();
   clearSession();
   showLoggedOut();
 }
@@ -336,22 +367,21 @@ function calculateInstallment() {
 }
 
 // ===================================================
-// CUSTOMER MANAGEMENT
+// CUSTOMER MANAGEMENT (MongoDB backend)
 // ===================================================
-const CUSTOMERS_KEY = 'demosite_customers';
-
-function getCustomers() {
-  return JSON.parse(localStorage.getItem(CUSTOMERS_KEY) || '[]');
+async function getCustomers() {
+  if (!getToken()) return [];
+  try {
+    const res = await apiFetch('/customers');
+    if (!res.ok) return [];
+    return await res.json();
+  } catch { return []; }
 }
-function saveCustomers(list) {
-  localStorage.setItem(CUSTOMERS_KEY, JSON.stringify(list));
-}
 
-function handleCustomerSubmit(e) {
+async function handleCustomerSubmit(e) {
   e.preventDefault();
   const editId = document.getElementById('cust-edit-id').value;
   const customer = {
-    id:      editId || Date.now().toString(),
     first:   document.getElementById('cust-first').value.trim(),
     last:    document.getElementById('cust-last').value.trim(),
     address: document.getElementById('cust-address').value.trim(),
@@ -359,32 +389,28 @@ function handleCustomerSubmit(e) {
     email:   document.getElementById('cust-email').value.trim(),
   };
 
-  const list = getCustomers();
-  if (editId) {
-    const idx = list.findIndex(c => c.id === editId);
-    if (idx !== -1) list[idx] = customer;
-  } else {
-    list.push(customer);
-  }
+  try {
+    if (editId) {
+      await apiFetch('/customers/' + editId, { method: 'PUT', body: JSON.stringify(customer) });
+    } else {
+      await apiFetch('/customers', { method: 'POST', body: JSON.stringify(customer) });
+    }
+  } catch { /* handled by apiFetch 401 */ }
 
-  saveCustomers(list);
-  renderCustomers();
+  await renderCustomers();
   cancelEdit();
   document.getElementById('customer-form').reset();
 
-  // Flash success
   const btn = document.getElementById('cust-submit-btn');
   const orig = btn.textContent;
   btn.textContent = editId ? 'Updated! ✓' : 'Added! ✓';
   btn.style.background = 'linear-gradient(135deg, #059669, #047857)';
-  setTimeout(() => {
-    btn.textContent = orig;
-    btn.style.background = '';
-  }, 1800);
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1800);
 }
 
-function editCustomer(id) {
-  const c = getCustomers().find(c => c.id === id);
+async function editCustomer(id) {
+  const list = await getCustomers();
+  const c = list.find(c => c.id === id);
   if (!c) return;
   document.getElementById('cust-edit-id').value  = c.id;
   document.getElementById('cust-first').value    = c.first;
@@ -406,16 +432,15 @@ function cancelEdit() {
   document.getElementById('customer-form').reset();
 }
 
-function deleteCustomer(id) {
+async function deleteCustomer(id) {
   if (!confirm('Delete this customer?')) return;
-  const list = getCustomers().filter(c => c.id !== id);
-  saveCustomers(list);
-  renderCustomers();
+  await apiFetch('/customers/' + id, { method: 'DELETE' });
+  await renderCustomers();
 }
 
-function renderCustomers() {
+async function renderCustomers() {
   const query = (document.getElementById('cust-search')?.value || '').toLowerCase();
-  let list = getCustomers();
+  let list = await getCustomers();
 
   if (query) {
     list = list.filter(c =>
@@ -428,8 +453,7 @@ function renderCustomers() {
   const tbody    = document.getElementById('cust-tbody');
   const countEl  = document.getElementById('cust-count');
 
-  const all = getCustomers();
-  countEl.textContent = all.length;
+  countEl.textContent = list.length;
 
   if (list.length === 0) {
     empty.style.display    = 'block';
@@ -465,12 +489,8 @@ function escHtml(str) {
 }
 
 // ===================================================
-// CRM SYSTEM
+// CRM SYSTEM (MongoDB backend)
 // ===================================================
-const LEADS_KEY      = 'demosite_leads';
-const DEALS_KEY      = 'demosite_deals';
-const ACTIVITIES_KEY = 'demosite_activities';
-
 const PIPELINE_STAGES = ['New','Contacted','Proposal','Negotiation','Won','Lost'];
 
 const STAGE_COLORS = {
@@ -481,13 +501,19 @@ const STAGE_COLORS = {
 const ACT_ICONS = { Call:'📞', Email:'📧', Meeting:'👥', Task:'✅', Note:'📝' };
 const ACT_COLOR_MAP = { Call:'act-call', Email:'act-email', Meeting:'act-meeting', Task:'act-task', Note:'act-note' };
 
-// --- Storage helpers ---
-const getLeads      = () => JSON.parse(localStorage.getItem(LEADS_KEY)      || '[]');
-const getDeals      = () => JSON.parse(localStorage.getItem(DEALS_KEY)      || '[]');
-const getActivities = () => JSON.parse(localStorage.getItem(ACTIVITIES_KEY) || '[]');
-const saveLeads      = d => localStorage.setItem(LEADS_KEY, JSON.stringify(d));
-const saveDeals      = d => localStorage.setItem(DEALS_KEY, JSON.stringify(d));
-const saveActivities = d => localStorage.setItem(ACTIVITIES_KEY, JSON.stringify(d));
+// --- API data fetchers ---
+async function getLeads() {
+  if (!getToken()) return [];
+  try { const r = await apiFetch('/leads'); return r.ok ? await r.json() : []; } catch { return []; }
+}
+async function getDeals() {
+  if (!getToken()) return [];
+  try { const r = await apiFetch('/deals'); return r.ok ? await r.json() : []; } catch { return []; }
+}
+async function getActivities() {
+  if (!getToken()) return [];
+  try { const r = await apiFetch('/activities'); return r.ok ? await r.json() : []; } catch { return []; }
+}
 
 // --- Tab switching ---
 function switchCrmTab(tab) {
@@ -504,11 +530,11 @@ function switchCrmTab(tab) {
 }
 
 // ======= DASHBOARD =======
-function renderCrmDashboard() {
-  const customers  = getCustomers();
-  const leads      = getLeads();
-  const deals      = getDeals();
-  const activities = getActivities();
+async function renderCrmDashboard() {
+  const customers  = await getCustomers();
+  const leads      = await getLeads();
+  const deals      = await getDeals();
+  const activities = await getActivities();
 
   const wonRevenue = deals
     .filter(d => d.stage === 'Won')
@@ -532,7 +558,7 @@ function renderCrmDashboard() {
     </div>`).join('');
 
   // Recent leads
-  const recentLeads = leads.slice(-5).reverse();
+  const recentLeads = leads.slice(0, 5);
   document.getElementById('dash-leads-list').innerHTML = recentLeads.length
     ? recentLeads.map(l => `
         <div class="dash-item">
@@ -560,7 +586,7 @@ function renderCrmDashboard() {
     </div>`).join('');
 
   // Recent activities
-  const recentActs = activities.slice(-5).reverse();
+  const recentActs = activities.slice(0, 5);
   document.getElementById('dash-activity-list').innerHTML = recentActs.length
     ? recentActs.map(a => `
         <div class="dash-item">
@@ -580,11 +606,10 @@ function badgeHtml(status) {
 }
 
 // ======= LEADS =======
-function handleLeadSubmit(e) {
+async function handleLeadSubmit(e) {
   e.preventDefault();
   const editId = document.getElementById('lead-edit-id').value;
   const lead = {
-    id:      editId || Date.now().toString(),
     first:   document.getElementById('lead-first').value.trim(),
     last:    document.getElementById('lead-last').value.trim(),
     company: document.getElementById('lead-company').value.trim(),
@@ -593,23 +618,24 @@ function handleLeadSubmit(e) {
     source:  document.getElementById('lead-source').value,
     status:  document.getElementById('lead-status').value,
     notes:   document.getElementById('lead-notes').value.trim(),
-    created: editId ? undefined : new Date().toISOString().split('T')[0],
   };
-  if (editId) {
-    const existing = getLeads().find(l => l.id === editId);
-    if (existing) lead.created = existing.created;
-  }
-  const list = getLeads();
-  if (editId) { const i = list.findIndex(l => l.id === editId); if (i !== -1) list[i] = lead; }
-  else list.push(lead);
-  saveLeads(list);
-  renderLeads();
+
+  try {
+    if (editId) {
+      await apiFetch('/leads/' + editId, { method: 'PUT', body: JSON.stringify(lead) });
+    } else {
+      await apiFetch('/leads', { method: 'POST', body: JSON.stringify(lead) });
+    }
+  } catch { /* handled */ }
+
+  await renderLeads();
   cancelLeadEdit();
   flashBtn('lead-submit-btn', editId ? 'Updated! ✓' : 'Added! ✓');
 }
 
-function editLead(id) {
-  const l = getLeads().find(l => l.id === id); if (!l) return;
+async function editLead(id) {
+  const list = await getLeads();
+  const l = list.find(l => l.id === id); if (!l) return;
   document.getElementById('lead-edit-id').value   = l.id;
   document.getElementById('lead-first').value     = l.first;
   document.getElementById('lead-last').value      = l.last;
@@ -633,19 +659,19 @@ function cancelLeadEdit() {
   document.getElementById('lead-form').reset();
 }
 
-function deleteLead(id) {
+async function deleteLead(id) {
   if (!confirm('Delete this lead?')) return;
-  saveLeads(getLeads().filter(l => l.id !== id));
-  renderLeads();
+  await apiFetch('/leads/' + id, { method: 'DELETE' });
+  await renderLeads();
 }
 
-function renderLeads() {
+async function renderLeads() {
   const query = (document.getElementById('lead-search')?.value||'').toLowerCase();
-  let list = getLeads();
+  let list = await getLeads();
   if (query) list = list.filter(l =>
     (l.first+' '+l.last+l.company+l.email+l.status).toLowerCase().includes(query));
 
-  document.getElementById('lead-count').textContent = getLeads().length;
+  document.getElementById('lead-count').textContent = list.length;
 
   const empty = document.getElementById('lead-empty');
   const wrap  = document.getElementById('lead-table-wrap');
@@ -669,9 +695,10 @@ function renderLeads() {
 }
 
 // ======= PIPELINE / DEALS =======
-function openDealModal(id) {
+async function openDealModal(id) {
   if (id) {
-    const d = getDeals().find(x => x.id === id); if (!d) return;
+    const list = await getDeals();
+    const d = list.find(x => x.id === id); if (!d) return;
     document.getElementById('deal-edit-id').value    = d.id;
     document.getElementById('deal-title').value      = d.title;
     document.getElementById('deal-value').value      = d.value;
@@ -700,11 +727,10 @@ function closeDealModalOutside(e) {
   if (e.target === document.getElementById('deal-modal')) closeDealModal();
 }
 
-function handleDealSubmit(e) {
+async function handleDealSubmit(e) {
   e.preventDefault();
   const editId = document.getElementById('deal-edit-id').value;
   const deal = {
-    id:        editId || Date.now().toString(),
     title:     document.getElementById('deal-title').value.trim(),
     value:     document.getElementById('deal-value').value,
     stage:     document.getElementById('deal-stage').value,
@@ -712,28 +738,32 @@ function handleDealSubmit(e) {
     closeDate: document.getElementById('deal-close-date').value,
     notes:     document.getElementById('deal-notes').value.trim(),
   };
-  const list = getDeals();
-  if (editId) { const i = list.findIndex(d => d.id === editId); if (i !== -1) list[i] = deal; }
-  else list.push(deal);
-  saveDeals(list);
-  renderPipeline();
+
+  try {
+    if (editId) {
+      await apiFetch('/deals/' + editId, { method: 'PUT', body: JSON.stringify(deal) });
+    } else {
+      await apiFetch('/deals', { method: 'POST', body: JSON.stringify(deal) });
+    }
+  } catch { /* handled */ }
+
+  await renderPipeline();
   closeDealModal();
 }
 
-function deleteDeal(id) {
+async function deleteDeal(id) {
   if (!confirm('Delete this deal?')) return;
-  saveDeals(getDeals().filter(d => d.id !== id));
-  renderPipeline();
+  await apiFetch('/deals/' + id, { method: 'DELETE' });
+  await renderPipeline();
 }
 
-function moveDeal(id, stage) {
-  const list = getDeals();
-  const i = list.findIndex(d => d.id === id);
-  if (i !== -1) { list[i].stage = stage; saveDeals(list); renderPipeline(); }
+async function moveDeal(id, stage) {
+  await apiFetch('/deals/' + id + '/stage', { method: 'PATCH', body: JSON.stringify({ stage }) });
+  await renderPipeline();
 }
 
-function renderPipeline() {
-  const deals = getDeals();
+async function renderPipeline() {
+  const deals = await getDeals();
   const board = document.getElementById('pipeline-board');
   board.innerHTML = PIPELINE_STAGES.map(stage => {
     const stageDealsList = deals.filter(d => d.stage === stage);
@@ -761,11 +791,10 @@ function renderPipeline() {
 }
 
 // ======= ACTIVITIES =======
-function handleActivitySubmit(e) {
+async function handleActivitySubmit(e) {
   e.preventDefault();
   const editId = document.getElementById('act-edit-id').value;
   const act = {
-    id:      editId || Date.now().toString(),
     type:    document.getElementById('act-type').value,
     related: document.getElementById('act-related').value.trim(),
     date:    document.getElementById('act-date').value,
@@ -773,17 +802,23 @@ function handleActivitySubmit(e) {
     notes:   document.getElementById('act-notes').value.trim(),
     status:  document.getElementById('act-status').value,
   };
-  const list = getActivities();
-  if (editId) { const i = list.findIndex(a => a.id === editId); if (i !== -1) list[i] = act; }
-  else list.push(act);
-  saveActivities(list);
-  renderActivities();
+
+  try {
+    if (editId) {
+      await apiFetch('/activities/' + editId, { method: 'PUT', body: JSON.stringify(act) });
+    } else {
+      await apiFetch('/activities', { method: 'POST', body: JSON.stringify(act) });
+    }
+  } catch { /* handled */ }
+
+  await renderActivities();
   cancelActEdit();
   flashBtn('act-submit-btn', editId ? 'Updated! ✓' : 'Logged! ✓');
 }
 
-function editActivity(id) {
-  const a = getActivities().find(a => a.id === id); if (!a) return;
+async function editActivity(id) {
+  const list = await getActivities();
+  const a = list.find(a => a.id === id); if (!a) return;
   document.getElementById('act-edit-id').value   = a.id;
   document.getElementById('act-type').value      = a.type;
   document.getElementById('act-related').value   = a.related;
@@ -804,19 +839,19 @@ function cancelActEdit() {
   document.getElementById('activity-form').reset();
 }
 
-function deleteActivity(id) {
+async function deleteActivity(id) {
   if (!confirm('Delete this activity?')) return;
-  saveActivities(getActivities().filter(a => a.id !== id));
-  renderActivities();
+  await apiFetch('/activities/' + id, { method: 'DELETE' });
+  await renderActivities();
 }
 
-function renderActivities() {
+async function renderActivities() {
   const query = (document.getElementById('act-search')?.value||'').toLowerCase();
-  let list = getActivities().slice().reverse();
+  let list = await getActivities();
   if (query) list = list.filter(a =>
     (a.subject+a.related+a.type+a.status).toLowerCase().includes(query));
 
-  document.getElementById('act-count').textContent = getActivities().length;
+  document.getElementById('act-count').textContent = list.length;
 
   const empty    = document.getElementById('act-empty');
   const timeline = document.getElementById('act-timeline');

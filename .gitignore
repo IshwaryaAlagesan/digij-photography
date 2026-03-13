@@ -1,4 +1,5 @@
 node_modules/
+server/.env
 allure-results/
 allure-report/
 tests/reports/
