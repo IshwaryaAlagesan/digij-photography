@@ -1,5 +1,5 @@
 // ===== API CONFIGURATION =====
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'https://digij-photography-api.onrender.com/api';
 
 function getToken()  { return localStorage.getItem('demosite_jwt'); }
 function setToken(t) { localStorage.setItem('demosite_jwt', t); }
